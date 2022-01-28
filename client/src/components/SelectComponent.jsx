@@ -4,12 +4,16 @@ import Button from "react-bootstrap/Button";
 import Select from "react-select";
 
 function SelectComponent() {
-  const [bank, setBank] = useState({});
-  const [branch, setBranch] = useState({});
-  const [bankOption, setBankOption] = useState([]);
-  const [branchOption, setBranchOption] = useState([]);
+  const [bank, setBank] = useState(null);
+  const [branch, setBranch] = useState(null);
+
   const [bankList, setBankList] = useState([]);
   const [branchList, setBranchList] = useState([]);
+
+  const [bankOption, setBankOption] = useState([]);
+  const [branchOption, setBranchOption] = useState([]);
+  const [branchValue,setBranchValue] = useState()
+
 
   useEffect(() => {
     getBankList();
@@ -67,11 +71,14 @@ function SelectComponent() {
   const handleSelectBank = (e) => {
     console.log(e.value);
     selectBank(e.value);
+    setBranchValue(null)
+    selectBranch(null)
   };
 
   const handleSelectBranch = (e) => {
     //console.log(e.target.value);
     selectBranch(e.value);
+    setBranchValue(e)
   };
 
   return (
@@ -82,6 +89,7 @@ function SelectComponent() {
         onChange={handleSelectBank}
       />
       <Select
+        value={branchValue}
         className='my-3'
         options={branchOption}
         onChange={handleSelectBranch}
