@@ -12,8 +12,7 @@ function SelectComponent() {
 
   const [bankOption, setBankOption] = useState([]);
   const [branchOption, setBranchOption] = useState([]);
-  const [branchValue,setBranchValue] = useState()
-
+  const [branchValue, setBranchValue] = useState();
 
   useEffect(() => {
     getBankList();
@@ -71,18 +70,18 @@ function SelectComponent() {
   const handleSelectBank = (e) => {
     console.log(e.value);
     selectBank(e.value);
-    setBranchValue(null)
-    selectBranch(null)
+    setBranchValue(null);
+    selectBranch(null);
   };
 
   const handleSelectBranch = (e) => {
     //console.log(e.target.value);
     selectBranch(e.value);
-    setBranchValue(e)
+    setBranchValue(e);
   };
 
   return (
-    <div className='container'>
+    <>
       <Select
         className='my-3'
         options={bankOption}
@@ -94,7 +93,7 @@ function SelectComponent() {
         options={branchOption}
         onChange={handleSelectBranch}
       />
-    </div>
+    </>
   );
 }
 export default SelectComponent;
